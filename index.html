@@ -1,43 +1,82 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="de">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Maderotherapie Ibiza – Körperformung & Detox</title>
-    <link rel="stylesheet" href="style.css" />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Maderotherapie Ibiza — Quiz & Beratung</title>
+  <meta name="description" content="Finde dein persönliches Maderotherapie‑Programm auf Ibiza. Quiz in 2 Minuten, mobile‑first.">
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script defer src="app.js"></script>
+  <!-- Open Graph -->
+  <meta property="og:title" content="Maderotherapie Ibiza — Quiz & Beratung">
+  <meta property="og:description" content="Finde dein persönliches Maderotherapie‑Programm auf Ibiza.">
+  <meta property="og:type" content="website">
 </head>
-
 <body>
-    <header>
+  <main class="page">
+    
+    <!-- Hero / Header -->
+    <header class="hero">
+      <div class="hero-inner">
         <h1>Maderotherapie Ibiza</h1>
-        <p>Dein persönliches Körper-Transformations-Quiz</p>
+        <p class="subtitle">Dein 2‑Minuten Quiz zur Empfehlung — Hals‑, Körper‑ & Lymphspeziell</p>
+        
+        <!-- Sprachwahl -->
+        <div class="language-select">
+          <select id="langSelect">
+            <option value="de">DE</option>
+            <option value="en">EN</option>
+            <option value="es">ES</option>
+          </select>
+        </div>
+        
+        <!-- Startbutton -->
+        <button id="startBtn" class="btn primary">Quiz starten</button>
+      </div>
     </header>
 
-    <main>
-        <section id="quiz-container">
-            <div id="question-card">
-                <h2 id="question-title"></h2>
-                <div id="answers"></div>
-            </div>
-        </section>
+    <!-- Quiz Sektion -->
+    <section class="quiz-wrap container hidden" id="quiz-container" aria-live="polite">
+      <div class="card">
+        <div id="question-title" class="quiz-question"></div>
+        <div id="answers" class="choice-list"></div>
+      </div>
+    </section>
 
-        <section id="result-section" class="hidden">
-            <h2>Deine persönliche Empfehlung</h2>
-            <p id="result-text"></p>
+    <!-- Ergebnis Sektion -->
+    <section id="result-section" class="container hidden">
+      <div class="card">
+        <h2 id="result-text" class="result-title"></h2>
+        <p id="session-plan"></p>
+        <hr/>
+        <h3>Jetzt Termin anfragen</h3>
+        <form name="contact" method="POST" data-netlify="true">
+          <input type="hidden" name="form-name" value="contact">
+          <div class="form-row"><input name="name" placeholder="Name" required></div>
+          <div class="form-row"><input name="email" type="email" placeholder="E‑Mail" required></div>
+          <div class="form-row"><textarea name="message" placeholder="Optionale Nachricht / Wunschbereich"></textarea></div>
+          <div class="form-row"><button class="btn primary" type="submit">Jetzt Anfrage senden</button></div>
+        </form>
+      </div>
+    </section>
 
-            <h3>Empfohlene Anzahl Maderotherapie-Sessions:</h3>
-            <p id="session-plan"></p>
+    <!-- Info Sektion -->
+    <section class="info container">
+      <h2>Was ist Maderotherapie?</h2>
+      <p>Sanfte bis intensive Holz‑Rollmassage mit speziellen Tools, entwickelt für Entstauung, Durchblutung, Hautbildverbesserung und Körperkonturierung. Auf Ibiza kombinieren wir das mit Meeres‑inspirierten Ritualen und entspannenden Ölmischungen.</p>
+    </section>
 
-            <form name="contact" method="POST" data-netlify="true" class="contact-form">
-                <h3>Erhalte dein persönliches Angebot:</h3>
-                <input type="text" name="name" placeholder="Dein Name" required />
-                <input type="email" name="email" placeholder="Deine Email" required />
-                <textarea name="message" placeholder="Nachricht (optional)"></textarea>
-                <button type="submit">Absenden</button>
-            </form>
-        </section>
-    </main>
+    <!-- Footer -->
+    <footer class="footer container">
+      <small>&copy; <span id="year"></span> Maderotherapie Ibiza — Kontakt: <a href="mailto:info@yourstudio.ibz">info@yourstudio.ibz</a></small>
+    </footer>
+  </main>
 
-    <script src="app.js"></script>
+  <script>
+    // aktuelles Jahr im Footer
+    const yearSpan = document.getElementById("year");
+    if(yearSpan) yearSpan.textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
