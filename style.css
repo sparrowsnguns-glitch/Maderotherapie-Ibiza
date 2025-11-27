@@ -1,46 +1,114 @@
-:root {
-  --bg:#f9f5f0;
-  --accent:#f47c7c;
-  --accent-dark:#d15656;
-  --accent-light:#ffe6e6;
-  --muted:#666666;
+:root{
+  --bg:#fbf5f7;
+  --rose:#f47c9a;
+  --rose-dark:#d55f7a;
+  --sand:#f4e9e6;
+  --muted:#6e6b6d;
   --card:#ffffff;
-  --radius:20px;
-  --maxw:720px;
+  --glass: rgba(255,255,255,0.85);
+  --radius:18px;
+  --maxw:760px;
 }
 
-* { box-sizing:border-box; }
-html, body { height:100%; margin:0; font-family:'Nunito', sans-serif; background:var(--bg); color:#1f2933; }
-.container { max-width:var(--maxw); margin:0 auto; padding:1rem; }
+/* Base */
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0;
+  font-family: "Nunito", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  background:linear-gradient(180deg,var(--bg),#fff);
+  color:#2b2a2b;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:1rem}
 
-.hero { text-align:center; padding:4rem 1rem; background:linear-gradient(180deg,rgba(255,255,255,0.7),rgba(255,255,255,0)); }
-.hero h1 { font-size:2.2rem; margin-bottom:0.5rem; color:#123; font-weight:800; }
-.subtitle { margin-bottom:1.5rem; color:var(--muted); font-size:1rem; line-height:1.5; }
+/* Hero */
+.hero{padding:2.5rem 1rem;text-align:center}
+.hero-inner{max-width:720px;margin:0 auto}
+.brand{font-size:1.9rem;margin:0;color:var(--rose-dark);font-weight:800;letter-spacing:0.6px}
+.lead{margin:.6rem 0 1rem;color:var(--muted);line-height:1.45}
 
-.language-select { margin-bottom:1.5rem; }
-.language-select select { padding:0.8rem 1.2rem; font-size:1rem; border-radius:50px; border:1px solid #ccc; background:#fff; cursor:pointer; transition:0.2s; }
-.language-select select:hover { border-color:var(--accent); }
+/* Controls */
+.controls{display:flex;gap:0.75rem;align-items:center;justify-content:center;flex-wrap:wrap;margin-top:.6rem}
+.lang-label select{
+  appearance:none;
+  -webkit-appearance:none;
+  padding:.6rem .9rem;
+  border-radius:999px;
+  border:1px solid rgba(0,0,0,0.06);
+  background:var(--card);
+  font-weight:700;
+  cursor:pointer;
+  box-shadow:0 6px 18px rgba(196,124,138,0.08);
+}
+.btn{cursor:pointer;border:none;padding:.9rem 1.6rem;border-radius:999px;font-weight:800;transition:transform .18s ease, box-shadow .18s ease}
+.btn.primary{background:linear-gradient(180deg,var(--rose),var(--rose-dark));color:#fff;box-shadow:0 10px 30px rgba(196,124,138,0.15)}
+.btn.primary:active{transform:translateY(2px);box-shadow:0 6px 18px rgba(196,124,138,0.10)}
 
-.btn { display:inline-block; padding:1rem 2.2rem; border:none; border-radius:50px; font-weight:700; cursor:pointer; transition:0.25s; box-shadow:0 5px 15px rgba(0,0,0,0.1);}
-.btn.primary { background:var(--accent); color:#fff; }
-.btn.primary:hover { background:var(--accent-dark); transform:translateY(-2px); }
+/* Card */
+.card{background:var(--card);border-radius:var(--radius);padding:1.6rem;margin:1rem 0;box-shadow:0 12px 40px rgba(32,24,28,0.06);transition:transform .28s ease, box-shadow .28s ease}
+.card.floating{border-radius:22px;box-shadow:0 18px 50px rgba(32,24,28,0.08)}
 
-.card { background:var(--card); border-radius:var(--radius); padding:2rem; margin:1rem 0; box-shadow:0 10px 30px rgba(0,0,0,0.08); transition:0.3s; }
-.card:hover { box-shadow:0 12px 35px rgba(0,0,0,0.12); }
+/* Quiz question */
+.quiz-question{font-weight:800;margin-bottom:.8rem;font-size:1.05rem}
+.choice-list{display:grid;gap:.7rem}
+.choice-list button{
+  display:block;
+  width:100%;
+  text-align:left;
+  background:linear-gradient(180deg, #fff, var(--sand));
+  padding:.9rem 1rem;
+  border-radius:14px;
+  border:1px solid rgba(196,124,138,0.08);
+  font-weight:700;
+  color:#222;
+  box-shadow:0 8px 20px rgba(196,124,138,0.03);
+  transition:transform .16s ease, box-shadow .16s ease, background .16s ease;
+}
+.choice-list button:hover{transform:translateY(-4px);box-shadow:0 18px 40px rgba(196,124,138,0.09);background:linear-gradient(180deg,#fff,#fde9ef)}
 
-.quiz-question { font-weight:700; margin-bottom:1rem; font-size:1.05rem; }
-.choice-list { display:grid; gap:1rem; }
-.choice { padding:1rem; border-radius:15px; border:1px solid rgba(0,0,0,0.08); background:linear-gradient(180deg,#fff,#fdfdfd); transition:0.2s; cursor:pointer; }
-.choice:hover { background:var(--accent-light); transform:translateY(-2px); }
+/* small UX */
+.progress{font-size:.85rem;color:var(--muted);text-align:right;margin-top:.6rem}
 
-.form-row { margin-bottom:1rem; }
-input, textarea { width:100%; padding:0.8rem; border-radius:15px; border:1px solid #e6e6e6; font-size:0.95rem; }
-textarea { resize:none; }
+/* form */
+.form-row{margin:.6rem 0}
+input,textarea{
+  width:100%;
+  padding:.85rem;
+  border-radius:14px;
+  border:1px solid rgba(0,0,0,0.06);
+  font-size:1rem;
+}
+textarea{min-height:100px;resize:vertical}
 
-.footer { padding:1.5rem 0; text-align:center; color:var(--muted); font-size:0.85rem; }
+/* WhatsApp button (minimal white/gold) */
+.whatsapp-btn{
+  display:inline-flex;align-items:center;gap:.6rem;
+  background:linear-gradient(180deg,#fff,#fff);
+  border-radius:999px;padding:.6rem .9rem;border:1px solid rgba(0,0,0,0.06);
+  box-shadow:0 6px 22px rgba(196,124,138,0.06);
+  color:var(--rose-dark);font-weight:800;cursor:pointer;margin-top:.5rem;
+}
+.whatsapp-bubble{
+  width:34px;height:34px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;
+  background:linear-gradient(135deg,#fff,#fff);border:1px solid rgba(196,124,138,0.08);
+  box-shadow:0 8px 20px rgba(196,124,138,0.06);color:var(--rose-dark);font-weight:900;
+}
 
-@media(min-width:768px) {
-  .hero h1 { font-size:2.8rem; }
-  .subtitle { font-size:1.2rem; }
-  .btn { padding:1.2rem 2.5rem; font-size:1.05rem; }
+/* thank you */
+.thanks{margin-top:1rem;font-weight:700;color:var(--rose-dark)}
+
+/* hidden util */
+.hidden{display:none}
+
+/* animations */
+.animated{opacity:0;transform:translateY(10px);animation:fadeInUp .48s forwards}
+@keyframes fadeInUp{to{opacity:1;transform:none}}
+
+/* responsive */
+@media(min-width:820px){
+  .hero{padding:3.2rem 1rem}
+  .brand{font-size:2.6rem}
+  .card{padding:2.2rem}
 }
