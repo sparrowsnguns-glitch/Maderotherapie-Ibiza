@@ -1,76 +1,102 @@
-const quizData = [
-  {
-    question: "Was ist dir aktuell am wichtigsten?",
-    answers: [
-      { text: "Wohler & leichter fühlen", points: 2 },
-      { text: "Straffer & definierter werden", points: 4 },
-      { text: "Weniger Wassereinlagerungen / Entstauung", points: 3 },
-      { text: "Cellulite reduzieren", points: 5 }
+// ====== Mehrsprachige Quiztexte ======
+const TEXTS = {
+  de: {
+    startBtn: "Quiz starten",
+    questions: [
+      {q:"Was ist dir aktuell am wichtigsten?", a:["Wohler & leichter fühlen","Straffer & definierter werden","Weniger Wassereinlagerungen / Entstauung","Cellulite reduzieren"]},
+      {q:"Welcher Bereich hat höchste Priorität?", a:["Bauch & Taille","Po","Beine","Arme","Rücken"]},
+      {q:"Wie ist deine aktuelle Gewebestruktur?", a:["glatt","leichte Unebenheiten","sichtbare Cellulite","stärker ausgeprägte Unebenheiten"]},
+      {q:"Wie fühlt sich dein Körper im Alltag an?", a:["leicht & entspannt","schwer / gestaut","geschwollen"]},
+      {q:"Welches Tempo fühlt sich richtig an?", a:["sanfter Einstieg (1× pro Woche)","konstante Entwicklung (2× pro Woche)","intensiver Fokus (3× pro Woche)"]},
+      {q:"Was motiviert dich am meisten?", a:["Reise / Sommer / Event","Wohlfühlen im eigenen Körper","Gesundheit & Vitalität","Selbstbewusstsein & Transformation"]}
+    ],
+    result: [
+      {title:"Sanfter Ibiza‑Einstieg", lead:"Sanfte Entstauung & Wohlfühlen", plan:"6–8 Sitzungen, 1×/Woche"},
+      {title:"Gezielte Konturierung", lead:"Definition & Hautbildverbesserung", plan:"8–12 Sitzungen, 2×/Woche"},
+      {title:"Intensiv‑Transformation", lead:"Maximale Formung & Tiefeffekt", plan:"10–15 Sitzungen, 2–3×/Woche"}
     ]
   },
-  {
-    question: "Welcher Bereich hat höchste Priorität?",
-    answers: [
-      { text: "Bauch & Taille", points: 4 },
-      { text: "Po", points: 3 },
-      { text: "Beine", points: 5 },
-      { text: "Arme", points: 2 },
-      { text: "Rücken", points: 1 }
+  en: {
+    startBtn: "Start Quiz",
+    questions: [
+      {q:"What is your top priority?", a:["Feel lighter","Tone & define","Reduce water retention","Reduce cellulite"]},
+      {q:"Which body area has highest priority?", a:["Belly & Waist","Buttocks","Legs","Arms","Back"]},
+      {q:"How would you describe your tissue structure?", a:["smooth","slight irregularities","visible cellulite / water retention","stronger irregularities"]},
+      {q:"How does your body feel during daily life?", a:["light & relaxed","heavy / congested","swollen"]},
+      {q:"Which pace feels right?", a:["gentle start (1x/week)","steady development (2x/week)","intensive focus (3x/week)"]},
+      {q:"What motivates you most?", a:["Trip / Summer / Event","Feel good in your body","Health & vitality","Confidence & transformation"]}
+    ],
+    result: [
+      {title:"Gentle Ibiza Start", lead:"Relaxation & light feeling", plan:"6–8 sessions, 1x/week"},
+      {title:"Targeted Contouring", lead:"Definition & visible skin improvement", plan:"8–12 sessions, 2x/week"},
+      {title:"Intensive Transformation", lead:"Maximal shaping & deep effect", plan:"10–15 sessions, 2–3x/week"}
     ]
   },
-  {
-    question: "Wie ist deine aktuelle Gewebestruktur?",
-    answers: [
-      { text: "glatt", points: 1 },
-      { text: "leichte Unebenheiten", points: 3 },
-      { text: "sichtbare Cellulite", points: 4 },
-      { text: "stärker ausgeprägte Unebenheiten", points: 5 }
-    ]
-  },
-  {
-    question: "Wie fühlt sich dein Körper im Alltag an?",
-    answers: [
-      { text: "leicht & entspannt", points: 1 },
-      { text: "schwer / gestaut", points: 3 },
-      { text: "geschwollen", points: 4 }
-    ]
-  },
-  {
-    question: "Welches Tempo fühlt sich richtig an?",
-    answers: [
-      { text: "sanfter Einstieg (1× pro Woche)", points: 1 },
-      { text: "konstante Entwicklung (2× pro Woche)", points: 3 },
-      { text: "intensiver Fokus (3× pro Woche)", points: 5 }
-    ]
-  },
-  {
-    question: "Was motiviert dich am meisten?",
-    answers: [
-      { text: "Reise / Sommer / Event", points: 3 },
-      { text: "Wohlfühlen im eigenen Körper", points: 2 },
-      { text: "Gesundheit & Vitalität", points: 4 },
-      { text: "Selbstbewusstsein & Transformation", points: 5 }
+  es: {
+    startBtn: "Iniciar Quiz",
+    questions: [
+      {q:"¿Qué es más importante para ti actualmente?", a:["Sentirse más ligero","Tonificar & definir","Reducir retención de líquidos","Reducir celulitis"]},
+      {q:"¿Qué área tiene mayor prioridad?", a:["Abdomen & cintura","Glúteos","Piernas","Brazos","Espalda"]},
+      {q:"¿Cómo describirías tu estructura de tejido?", a:["suave","leve irregularidad","celulitis visible / retención de líquidos","irregularidades fuertes"]},
+      {q:"¿Cómo se siente tu cuerpo en el día a día?", a:["ligero & relajado","pesado / congestionado","hinchado"]},
+      {q:"¿Qué ritmo te parece adecuado?", a:["inicio suave (1x/semana)","desarrollo constante (2x/semana)","foco intensivo (3x/semana)"]},
+      {q:"¿Qué te motiva más a comenzar?", a:["Viaje / verano / evento","Sentirse bien en el cuerpo","Salud & vitalidad","Confianza & transformación"]}
+    ],
+    result: [
+      {title:"Inicio suave Ibiza", lead:"Relajación & bienestar", plan:"6–8 sesiones, 1x/semana"},
+      {title:"Contorneado específico", lead:"Definición & mejora visible de la piel", plan:"8–12 sesiones, 2x/semana"},
+      {title:"Transformación intensiva", lead:"Máxima forma & efecto profundo", plan:"10–15 sesiones, 2–3x/semana"}
     ]
   }
-];
+};
 
+// ====== Globale Variablen ======
+let currentLang = "de";
 let currentQuestion = 0;
 let totalPoints = 0;
 
+// ====== DOM Elemente ======
+const langSelect = document.getElementById("langSelect");
+const startBtn = document.getElementById("startBtn");
 const questionTitle = document.getElementById("question-title");
 const answersDiv = document.getElementById("answers");
-const resultSection = document.getElementById("result-section");
 const quizContainer = document.getElementById("quiz-container");
+const resultSection = document.getElementById("result-section");
+const resultText = document.getElementById("result-text");
+const sessionPlan = document.getElementById("session-plan");
+
+// ====== Sprachwahl Event ======
+langSelect.addEventListener("change", e => {
+  currentLang = e.target.value;
+  restartQuiz();
+});
+
+// ====== Quiz starten ======
+startBtn.addEventListener("click", () => {
+  startBtn.classList.add("hidden");
+  quizContainer.classList.remove("hidden");
+  loadQuestion();
+});
+
+// ====== Funktionen ======
+function restartQuiz() {
+  currentQuestion = 0;
+  totalPoints = 0;
+  quizContainer.classList.add("hidden");
+  resultSection.classList.add("hidden");
+  startBtn.classList.remove("hidden");
+  startBtn.textContent = TEXTS[currentLang].startBtn;
+}
 
 function loadQuestion() {
-  let q = quizData[currentQuestion];
-  questionTitle.textContent = q.question;
-
+  const q = TEXTS[currentLang].questions[currentQuestion];
+  questionTitle.textContent = q.q;
   answersDiv.innerHTML = "";
-  q.answers.forEach(a => {
-    let btn = document.createElement("button");
-    btn.textContent = a.text;
-    btn.onclick = () => selectAnswer(a.points);
+
+  q.a.forEach((ans, i) => {
+    const btn = document.createElement("button");
+    btn.textContent = ans;
+    btn.onclick = () => selectAnswer(i + 1); // einfache Punkte-Verteilung
     answersDiv.appendChild(btn);
   });
 }
@@ -78,8 +104,7 @@ function loadQuestion() {
 function selectAnswer(points) {
   totalPoints += points;
   currentQuestion++;
-
-  if (currentQuestion < quizData.length) {
+  if (currentQuestion < TEXTS[currentLang].questions.length) {
     loadQuestion();
   } else {
     showResult();
@@ -90,26 +115,12 @@ function showResult() {
   quizContainer.classList.add("hidden");
   resultSection.classList.remove("hidden");
 
-  let resultText = "";
-  let sessionText = "";
+  let tier;
+  if (totalPoints <= 12) tier = 0;
+  else if (totalPoints <= 20) tier = 1;
+  else tier = 2;
 
-  if (totalPoints <= 12) {
-    resultText = "Du brauchst einen sanften Start zur Entspannung und Entstauung.";
-    sessionText = "Empfohlen: 4–6 Maderotherapie-Sessions.";
-  } else if (totalPoints <= 20) {
-    resultText = "Dein Fokus liegt auf Tonisierung, Reduktion leichter Cellulite und Formung.";
-    sessionText = "Empfohlen: 6–10 Sessions.";
-  } else if (totalPoints <= 28) {
-    resultText = "Du möchtest klare Veränderungen: Gewebeverbesserung & Detox.";
-    sessionText = "Empfohlen: 10–14 Sessions.";
-  } else {
-    resultText = "Starke Zielsetzung: Transformation, Formung & Lymphaktivierung.";
-    sessionText = "Empfohlen: 14–20 Sessions.";
-  }
-
-  document.getElementById("result-text").textContent = resultText;
-  document.getElementById("session-plan").textContent = sessionText;
+  const r = TEXTS[currentLang].result[tier];
+  resultText.textContent = r.lead;
+  sessionPlan.textContent = r.plan;
 }
-
-// Start
-loadQuestion();
