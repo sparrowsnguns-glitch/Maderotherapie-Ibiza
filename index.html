@@ -1,50 +1,40 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Maderotherapy Ibiza — Quiz</title>
-  <meta name="description" content="Maderotherapy Ibiza — personalized quiz for vacation wellness." />
-  <link rel="stylesheet" href="style.css" />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Maderotherapie Ibiza — Quiz & Beratung</title>
+  <meta name="description" content="Finde dein persönliches Maderotherapie‑Programm auf Ibiza. Quiz in 2 Minuten, mobile‑first.">
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script defer src="app.js"></script>
 </head>
 <body>
-  <main class="wrap">
-
-    <!-- HERO -->
+  <main class="page">
     <header class="hero">
       <div class="hero-inner">
-        <h1 class="brand">Maderotherapy Ibiza</h1>
-        <p id="info-text" class="lead">Discover your personalized Maderotherapy plan for relaxation, contouring and lymphatic wellness during your Ibiza stay.</p>
-
-        <div class="controls">
-          <label class="lang-label">
-            <select id="langSelect" aria-label="Language">
-              <option value="en">English</option>
-              <option value="de">Deutsch</option>
-              <option value="es">Español</option>
-            </select>
-          </label>
-
-          <button id="startBtn" class="btn primary" aria-haspopup="true">Start Quiz</button>
-        </div>
+        <h1>Maderotherapie Ibiza</h1>
+        <p id="info-text">Discover your personalized Maderotherapy plan for relaxation, contouring, and lymphatic wellness during your Ibiza vacation.</p>
+        <select id="langSelect" class="lang-select">
+          <option value="de">DE</option>
+          <option value="en" selected>EN</option>
+          <option value="es">ES</option>
+        </select>
+        <button id="startBtn" class="btn primary">Start Quiz</button>
       </div>
     </header>
 
-    <!-- QUIZ -->
-    <section id="quizSection" class="stage hidden" aria-live="polite">
-      <div id="quizCard" class="card animated"></div>
+    <section id="quizSection" class="quiz-wrap container hidden">
+      <div id="quizCard" class="card floating-card"></div>
     </section>
 
-    <!-- RESULT -->
-    <section id="resultSection" class="stage hidden">
-      <div id="resultCard" class="card floating"></div>
+    <section id="resultSection" class="container hidden">
+      <div id="resultCard" class="card floating-card"></div>
     </section>
 
-    <footer class="footer">
-      <small>&copy; <span id="year"></span> Maderotherapy Ibiza</small>
+    <footer class="footer container">
+      <small>&copy; <span id="year"></span> Maderotherapie Ibiza</small>
     </footer>
   </main>
-
-  <script src="script.js" defer></script>
 </body>
 </html>
