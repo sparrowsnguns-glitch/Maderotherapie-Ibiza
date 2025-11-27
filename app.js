@@ -26,7 +26,7 @@ const LANG = {
       {q:"Welcher Bereich hat aktuell die höchste Priorität?",a:["Bauch & Taille","Po","Beine","Arme","Rücken"]},
       {q:"Wie würdest du deine Gewebestruktur beschreiben?",a:["glatt","leichte Unebenheiten","sichtbare Cellulite / Wassereinlagerungen","stärker ausgeprägte Unebenheiten"]},
       {q:"Wie fühlt sich dein Körper im Alltag an?",a:["leicht & entspannt","schwer / gestaut","geschwollen"]},
-      {q:"Welches Tempo passt für dich?",a:["sanfter Einstieg (1× pro Woche)","konstante Entwicklung (2× pro Woche)","intensiver Fokus (3× pro Woche)"]},
+      {q:"Welches Tempo passt für dich?",a:["sanfter Einstieg (1×/Woche)","konstante Entwicklung (2×/Woche)","intensiver Fokus (3×/Woche)"]},
       {q:"Was motiviert dich aktuell zu starten?",a:["Reise / Sommer / Event","Wohlfühlen im eigenen Körper","Gesundheit & Vitalität","Selbstbewusstsein & Transformation"]}
     ],
     results:[
@@ -66,8 +66,10 @@ const resultCard = document.getElementById("resultCard");
 const startBtn = document.getElementById("startBtn");
 const langSelect = document.getElementById("langSelect");
 const infoTextEl = document.getElementById("info-text");
+const yearSpan = document.getElementById("year");
+if(yearSpan) yearSpan.textContent = new Date().getFullYear();
 
-// Sprache dynamisch wechseln
+// Sprache wechseln
 langSelect.addEventListener("change", ()=>{
   currentLang = langSelect.value;
   const langObj = LANG[currentLang];
@@ -105,7 +107,7 @@ function renderQuestion(){
 
 // Ergebnis anzeigen
 function showResult(){
-  quizSection.classList.add("hidden");
+  quizSection.classList.add("hidden"); // Quiz verschwindet komplett
   resultSection.classList.remove("hidden");
 
   let tier = score<=12?0:score<=20?1:2;
@@ -132,8 +134,11 @@ function showResult(){
   `;
 
   document.getElementById("restartBtn").addEventListener("click", ()=>{
+    idx = 0; score = 0;
+    quizSection.classList.add("hidden");
     resultSection.classList.add("hidden");
     startBtn.textContent = langObj.start;
     startBtn.classList.remove("hidden");
+    window.scrollTo({ top:0, behavior:'smooth' });
   });
 }
