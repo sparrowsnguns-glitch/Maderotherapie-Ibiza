@@ -1,52 +1,50 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Maderotherapy Ibiza — Quiz & Consultation</title>
-<meta name="description" content="Discover your personalized Maderotherapy program in Ibiza. 2-minute quiz, mobile-first.">
-
-<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css">
-<script defer src="app.js"></script>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Maderotherapy Ibiza — Quiz</title>
+  <meta name="description" content="Maderotherapy Ibiza — personalized quiz for vacation wellness." />
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-<main class="page">
+  <main class="wrap">
 
-  <!-- Hero -->
-  <header class="hero">
-    <div class="hero-inner">
-      <h1>Maderotherapy Ibiza</h1>
-      <p class="subtitle" id="info-text">Discover your personalized Maderotherapy plan for relaxation, contouring, and lymphatic wellness during your Ibiza vacation.</p>
+    <!-- HERO -->
+    <header class="hero">
+      <div class="hero-inner">
+        <h1 class="brand">Maderotherapy Ibiza</h1>
+        <p id="info-text" class="lead">Discover your personalized Maderotherapy plan for relaxation, contouring and lymphatic wellness during your Ibiza stay.</p>
 
-      <!-- Language Selector -->
-      <div class="language-select">
-        <select id="langSelect">
-          <option value="en">English</option>
-          <option value="de">Deutsch</option>
-          <option value="es">Español</option>
-        </select>
+        <div class="controls">
+          <label class="lang-label">
+            <select id="langSelect" aria-label="Language">
+              <option value="en">English</option>
+              <option value="de">Deutsch</option>
+              <option value="es">Español</option>
+            </select>
+          </label>
+
+          <button id="startBtn" class="btn primary" aria-haspopup="true">Start Quiz</button>
+        </div>
       </div>
+    </header>
 
-      <button id="startBtn" class="btn primary">Start Quiz</button>
-    </div>
-  </header>
+    <!-- QUIZ -->
+    <section id="quizSection" class="stage hidden" aria-live="polite">
+      <div id="quizCard" class="card animated"></div>
+    </section>
 
-  <!-- Quiz Section -->
-  <section class="quiz-wrap container hidden" id="quizSection" aria-live="polite">
-    <div id="quizCard" class="card"></div>
-  </section>
+    <!-- RESULT -->
+    <section id="resultSection" class="stage hidden">
+      <div id="resultCard" class="card floating"></div>
+    </section>
 
-  <!-- Result Section -->
-  <section id="resultSection" class="container hidden">
-    <div id="resultCard" class="card"></div>
-  </section>
+    <footer class="footer">
+      <small>&copy; <span id="year"></span> Maderotherapy Ibiza</small>
+    </footer>
+  </main>
 
-  <!-- Footer -->
-  <footer class="footer container">
-    <small>&copy; <span id="year"></span> Maderotherapy Ibiza — Contact: <a href="mailto:info@yourstudio.ibz">info@yourstudio.ibz</a></small>
-  </footer>
-
-</main>
+  <script src="script.js" defer></script>
 </body>
 </html>
