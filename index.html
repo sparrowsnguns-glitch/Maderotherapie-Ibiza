@@ -1,321 +1,43 @@
-<!-- Maderotherapie Landingpage — Complete GitHub‑ready project tailored to Ibiza -->
-
-# Project: Maderotherapie — Ibiza Landingpage
-
-This single-file contains the complete project skeleton and all source files needed to deploy the landingpage to GitHub (or Netlify). It's mobile-first, mediterranean / Ibiza-inspired, includes a multi-step quiz, a points-based recommendation engine, three result tiers, and a contact form prepped for Netlify Forms + fallback to Formspree.
-
----
-
-## Files contained below (copy into your repo as separate files)
-
-### 1) `index.html`
-```html
-<!doctype html>
+<!DOCTYPE html>
 <html lang="de">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Maderotherapie Ibiza — Quiz & Beratung</title>
-  <meta name="description" content="Finde dein persönliches Maderotherapie‑Programm auf Ibiza. Quiz in 2 Minuten, mobile‑first.">
-  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
-  <script defer src="app.js"></script>
-  <!-- Open Graph -->
-  <meta property="og:title" content="Maderotherapie Ibiza — Quiz & Beratung">
-  <meta property="og:description" content="Finde dein persönliches Maderotherapie‑Programm auf Ibiza.">
-  <meta property="og:type" content="website">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Maderotherapie Ibiza – Körperformung & Detox</title>
+    <link rel="stylesheet" href="style.css" />
 </head>
+
 <body>
-  <main class="page">
-    <header class="hero">
-      <div class="hero-inner">
+    <header>
         <h1>Maderotherapie Ibiza</h1>
-        <p class="subtitle">Dein 2‑Minuten Quiz zur Empfehlung — Hals‑, Körper‑ & Lymphspeziell</p>
-        <button id="startBtn" class="btn primary">Quiz starten</button>
-      </div>
+        <p>Dein persönliches Körper-Transformations-Quiz</p>
     </header>
 
-    <section class="quiz-wrap container hidden" id="quizSection" aria-live="polite">
-      <!-- Quiz built by JS into this container -->
-      <div id="quizCard" class="card"></div>
-    </section>
+    <main>
+        <section id="quiz-container">
+            <div id="question-card">
+                <h2 id="question-title"></h2>
+                <div id="answers"></div>
+            </div>
+        </section>
 
-    <section id="resultSection" class="container hidden">
-      <div id="resultCard" class="card"></div>
-    </section>
+        <section id="result-section" class="hidden">
+            <h2>Deine persönliche Empfehlung</h2>
+            <p id="result-text"></p>
 
-    <section class="info container">
-      <h2>Was ist Maderotherapie?</h2>
-      <p>Sanfte bis intensive Holz‑Rollmassage mit speziellen Tools, entwickelt für Entstauung, Durchblutung, Hautbildverbesserung und Körperkonturierung. Auf Ibiza kombinieren wir das mit Meeres‑inspirierten Ritualen und entspannenden Ölmischungen.</p>
-    </section>
+            <h3>Empfohlene Anzahl Maderotherapie-Sessions:</h3>
+            <p id="session-plan"></p>
 
-    <footer class="footer container">
-      <small>&copy; <span id="year"></span> Maderotherapie Ibiza — Kontakt: <a href="mailto:info@yourstudio.ibz">info@yourstudio.ibz</a></small>
-    </footer>
-  </main>
+            <form name="contact" method="POST" data-netlify="true" class="contact-form">
+                <h3>Erhalte dein persönliches Angebot:</h3>
+                <input type="text" name="name" placeholder="Dein Name" required />
+                <input type="email" name="email" placeholder="Deine Email" required />
+                <textarea name="message" placeholder="Nachricht (optional)"></textarea>
+                <button type="submit">Absenden</button>
+            </form>
+        </section>
+    </main>
 
-  <!-- Hidden contact form template (Netlify-ready) -->
-  <form id="contactForm" name="contact" data-netlify="true" netlify-honeypot="bot-field" class="hidden">
-    <input type="hidden" name="form-name" value="contact">
-    <p class="hidden"><label>Don’t fill this out: <input name="bot-field"></label></p>
-    <label>Name<input name="name"></label>
-    <label>Email<input name="email" type="email"></label>
-    <label>Nachricht<textarea name="message"></textarea></label>
-  </form>
+    <script src="app.js"></script>
 </body>
 </html>
-```
-
----
-
-### 2) `style.css`
-```css
-:root{
-  --bg:#f6efe6; /* sand */
-  --accent:#2eaab1; /* mediterranean turquoise */
-  --accent-2:#c57a4a; /* terracotta */
-  --muted:#6b6b6b;
-  --card:#ffffff;
-  --radius:14px;
-  --maxw:720px;
-}
-*{box-sizing:border-box}
-html,body{height:100%}
-body{
-  font-family: 'Nunito', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
-  background:linear-gradient(180deg,var(--bg),#fff);
-  color:#1f2933;
-  margin:0;
-  -webkit-font-smoothing:antialiased;
-}
-.container{max-width:var(--maxw);margin:0 auto;padding:1rem}
-.hero{padding:3rem 1rem;background-image:linear-gradient(180deg,rgba(255,255,255,0.6),rgba(255,255,255,0));backdrop-filter:blur(6px);}
-.hero-inner{max-width:640px;margin:0 auto;text-align:center}
-.hero h1{font-size:1.6rem;margin:0;color:#123;letter-spacing:0.6px}
-.subtitle{margin-top:0.5rem;color:var(--muted)}
-.btn{display:inline-block;padding:0.8rem 1.1rem;border-radius:10px;border:none;font-weight:700}
-.btn.primary{background:var(--accent);color:#fff}
-.card{background:var(--card);border-radius:var(--radius);padding:1rem;margin:1rem 0;box-shadow:0 8px 24px rgba(18,38,48,0.06)}
-.quiz-question{font-weight:700;margin-bottom:0.6rem}
-.choice-list{display:grid;gap:0.6rem}
-.choice{padding:0.9rem;border-radius:12px;border:1px solid rgba(0,0,0,0.06);background:linear-gradient(180deg,#fff,#fbfbfb);text-align:left}
-.choice button{width:100%;text-align:left;border:none;background:transparent;font-size:0.98rem;padding:0}
-.hidden{display:none}
-.result-title{font-size:1.2rem;font-weight:800}
-.result-lead{margin:0.4rem 0 1rem;color:var(--muted)}
-.form-row{display:flex;flex-direction:column;gap:0.6rem}
-input,textarea{padding:0.8rem;border-radius:10px;border:1px solid #e6e6e6}
-.footer{padding:1.2rem 0;text-align:center;color:var(--muted)}
-@media(min-width:760px){
-  .hero{padding:5rem 1rem}
-  .hero h1{font-size:2.3rem}
-}
-```
-
----
-
-### 3) `app.js`
-```js
-// Mobile-first quiz + scoring logic
-const QUESTIONS = [
-  {
-    q: 'Was ist dir aktuell am wichtigsten, wenn du an deinen Körper denkst?',
-    a: [
-      {t:'Wohler & leichter fühlen', p:1},
-      {t:'Straffer & definierter werden', p:3},
-      {t:'Weniger Wassereinlagerungen / Entstauung', p:2},
-      {t:'Unebenheiten / Cellulite reduzieren', p:4}
-    ]
-  },
-  {
-    q: 'Welcher Bereich hat für dich aktuell die höchste Priorität?',
-    a: [
-      {t:'Bauch & Taille', p:3}, {t:'Po', p:3}, {t:'Beine', p:4}, {t:'Arme', p:2}, {t:'Rücken', p:2}
-    ]
-  },
-  {
-    q: 'Wie würdest du deine aktuelle Gewebestruktur beschreiben?',
-    a: [
-      {t:'glatt', p:0}, {t:'leichte Unebenheiten', p:2}, {t:'sichtbare Cellulite / Wassereinlagerungen', p:4}, {t:'stärker ausgeprägte Unebenheiten', p:5}
-    ]
-  },
-  {
-    q: 'Wie fühlt sich dein Körper im Alltag eher an?',
-    a: [
-      {t:'leicht & entspannt', p:1}, {t:'schwer / gestaut', p:3}, {t:'geschwollen', p:4}
-    ]
-  },
-  {
-    q: 'Welches Tempo fühlt sich für dich richtig an?',
-    a: [
-      {t:'sanfter Einstieg (1× pro Woche)', p:1}, {t:'konstante Entwicklung (2× pro Woche)', p:2}, {t:'intensiver Fokus (3× pro Woche)', p:3}
-    ]
-  },
-  {
-    q: 'Was motiviert dich am meisten, jetzt zu starten?',
-    a: [
-      {t:'Reise / Sommer / Event', p:2}, {t:'Wohlfühlen im eigenen Körper', p:3}, {t:'Gesundheit & Vitalität', p:2}, {t:'Selbstbewusstsein & Transformation', p:4}
-    ]
-  }
-];
-
-let idx = 0, score = 0, choices = [];
-
-const startBtn = document.getElementById('startBtn');
-const quizCard = document.getElementById('quizCard');
-const quizSection = document.getElementById('quizSection');
-const resultSection = document.getElementById('resultSection');
-const resultCard = document.getElementById('resultCard');
-const yearSpan = document.getElementById('year');
-if(yearSpan) yearSpan.textContent = new Date().getFullYear();
-
-function startQuiz(){
-  startBtn.closest('.hero-inner').querySelector('button').classList.add('hidden');
-  quizSection.classList.remove('hidden');
-  renderQuestion();
-  window.scrollTo({top:0,behavior:'smooth'});
-}
-
-function renderQuestion(){
-  const Q = QUESTIONS[idx];
-  quizCard.innerHTML = `
-    <div class="quiz-block">
-      <div class="quiz-question">${idx+1}. ${Q.q}</div>
-      <div class="choice-list">
-        ${Q.a.map((opt,i)=>`<div class="choice"><button data-p="${opt.p}">${opt.t}</button></div>`).join('')}
-      </div>
-      <div style="margin-top:.6rem;text-align:right;color:var(--muted)">Frage ${idx+1} von ${QUESTIONS.length}</div>
-    </div>`;
-  // attach handlers
-  quizCard.querySelectorAll('button[data-p]').forEach(b=>{
-    b.addEventListener('click',e=>{
-      const p = parseInt(b.dataset.p,10)||0;
-      score += p; choices.push({q:Q.q, a:b.textContent, p});
-      idx++;
-      if(idx<QUESTIONS.length) renderQuestion(); else finishQuiz();
-    });
-  });
-}
-
-function finishQuiz(){
-  quizSection.classList.add('hidden');
-  resultSection.classList.remove('hidden');
-  const tier = evaluate(score);
-  const regionFocus = choices.find(c=>c.q.includes('Bereich'))?.a || '';
-  resultCard.innerHTML = `
-    <div class="card">
-      <div class="result-title">${tier.title}</div>
-      <div class="result-lead">${tier.lead}</div>
-      <div><strong>Empfohlen:</strong> ${tier.plan}</div>
-      <div style="margin-top:1rem"><strong>Fokusbereich:</strong> ${regionFocus}</div>
-      <div style="margin-top:1rem">
-        <p>Dein persönliches Ergebnis basiert auf deinen Antworten. Für eine passgenaue Planung bieten wir eine telefonische Kurzberatung (10‑15 min) an.</p>
-      </div>
-      <hr/>
-      <div style="margin-top:0.6rem">
-        <h3>Jetzt Termin anfragen</h3>
-        <!-- Netlify-ready form: if not using Netlify replace with Formspree action or capture via JS -->
-        <form name="contact" method="POST" data-netlify="true">
-          <input type="hidden" name="form-name" value="contact">
-          <div class="form-row"><input name="name" placeholder="Name" required></div>
-          <div class="form-row"><input name="email" type="email" placeholder="E‑Mail" required></div>
-          <div class="form-row"><textarea name="message" placeholder="Gebe hier optional deine Wunschregion oder Frage an"></textarea></div>
-          <div class="form-row"><button class="btn primary" type="submit">Jetzt Anfrage senden</button></div>
-        </form>
-      </div>
-    </div>
-  `;
-}
-
-function evaluate(score){
-  // Provide structured recommendations; texts tailored for Ibiza wellness positioning
-  if(score <= 12) return {
-    title:'Sanfter Ibiza‑Einstieg',
-    lead:'Sanfte Entstauung & Wohlfühlen — ideal als Start in deine Körperroutine.',
-    plan:'6–8 Sitzungen, 1×/Woche • Fokus: Lymphdrainage, leichte Körpermodellage, Meeres‑Aromaölbehandlung'
-  }
-  if(score <= 20) return {
-    title:'Gezielte Konturierung',
-    lead:'Ziel: Definition & sichtbare Hautbildverbesserung — perfekt für Strand‑Events auf Ibiza.',
-    plan:'8–12 Sitzungen, 2×/Woche • Fokus: Cellulite‑Reduktion, Hautstraffung, lokale Intensivbehandlung'
-  }
-  return {
-    title:'Intensiv‑Transformation',
-    lead:'Maximale Formung & Tiefeffekt — für sichtbare Veränderung in kurzer Zeit.',
-    plan:'10–15 Sitzungen, 2–3×/Woche • Fokus: tiefere Massageintensität, kombinierte Lymph‑ und Konturtechnik'
-  }
-}
-
-startBtn.addEventListener('click', startQuiz);
-```
-
----
-
-### 4) `README.md` (Deployment + Customization guide)
-```md
-# Maderotherapie Ibiza — Landingpage
-
-## Inhalt
-Dieses Repo enthält eine mobile‑first Landingpage mit Quiz, Ergebnislogik und Netlify‑Formulare. Perfekt um direkt auf GitHub Pages oder Netlify gehostet zu werden.
-
-## Lokales Testen
-1. Dateien in einen Ordner legen (`index.html`, `style.css`, `app.js`).
-2. Starte einen simplen Server (Python) im Ordner: `python3 -m http.server 8000` und rufe `http://localhost:8000` auf.
-
-## Deployment zu GitHub (kurz)
-1. Neues Repo auf GitHub erstellen (z. B. `maderotherapie-ibiza`).
-2. Lokal initialisieren & pushen:
-   ```bash
-   git init
-   git add .
-   git commit -m "Initial commit: Maderotherapie Ibiza landingpage"
-   git branch -M main
-   git remote add origin https://github.com/<username>/maderotherapie-ibiza.git
-   git push -u origin main
-   ```
-3. GitHub Pages aktivieren:
-   - Einstellungen > Pages > Branch: `main` / Root → Save. Die Seite wird unter `https://<username>.github.io/maderotherapie-ibiza/` bereitgestellt.
-
-**Hinweis:** GitHub Pages bietet kein serverseitiges Formular‑Handling. Verwende Netlify oder Formspree für Formularverarbeitung.
-
-## Deployment zu Netlify (empfohlen für Formulare)
-1. Auf netlify.com anmelden.
-2. Neues Site > "Import from Git" > GitHub > wähle dein Repo.
-3. Build settings: kein Build Befehl nötig für statische Seite; Publish directory: `/`.
-4. Deploy.
-
-Netlify unterstützt `data-netlify="true"` Formulare ohne Backend. Die im Code vorhandene Formularstruktur ist bereits kompatibel.
-
-## Formspree Alternative
-Wenn du Formspree nutzt, ändere das `<form>` Tag in `action="https://formspree.io/f/<your-id>" method="POST"` und entferne `data-netlify`.
-
-## Anpassungen für Ibiza‑Look
-- Ersetze Texte (Studio‑Name, E‑Mail, Impressum) mit deinen Daten.
-- Bilder: lege Ordner `/assets` an und ersetze Hero/Inline‑Bilder.
-- Farben: passe CSS Variablen in `:root` an (Sand, Türkis, Terrakotta).
-
-## Optional: Automatische GH Pages via Actions
-Wenn du statische Seiten über `gh-pages` Branch pushen willst, verwende `peaceiris/actions-gh-pages` oder `JamesIves/github-pages-deploy-action`.
-
-## Datenschutz & Recht
-- Impressum, Datenschutzerklärung & Hinweis zur Wirksamkeit ergänzen.
-- Achte auf DSGVO bei Kontaktformularen, speichere nur notwendige Daten.
-```
-
----
-
-## Hinweise zur Individualisierung (Ibiza‑Feeling)
-- **Fotografie:** nutze helle Strandbilder, Holztexturen, close‑ups von Tools in warmem Licht. 
-- **Copy:** Erwähne lokale Atmosphäre („Behandelt in ruhiger Villa nahe Cala Comte / Ibiza“), Aromaöle (Lavendel, Meersalz), und nachhaltige Holztools.
-- **Trust:** kleines FAQ, kurze Erklärung zu Effekt & Erwartung (ehrlich & seriös).
-
----
-
-## Nächste Schritte (was ich dir ohne Rückfrage direkt vorbereiten kann)
-- React‑Single‑Page Version (Vite + React + Tailwind).
-- GitHub Actions Workflow zur automatischen Deploy bei Push.
-- Formularintegration mit Zapier / Google Sheets oder Mailchimp.
-
----
-
-Ende der Projektdatei. Kopiere die Abschnitte in Dateien in deinem Repo und folge der README für Deployment.
