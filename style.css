@@ -1,6 +1,6 @@
 :root {
-  --bg:#f9f5f0; /* soft sand */
-  --accent:#f47c7c; /* feminine coral */
+  --bg:#f9f5f0;
+  --accent:#f47c7c;
   --accent-dark:#d15656;
   --accent-light:#ffe6e6;
   --muted:#666666;
@@ -10,15 +10,13 @@
 }
 
 * { box-sizing:border-box; }
-html, body { height:100%; margin:0; font-family:'Nunito', system-ui, sans-serif; color:#1f2933; background:var(--bg); }
+html, body { height:100%; margin:0; font-family:'Nunito', sans-serif; background:var(--bg); color:#1f2933; }
 .container { max-width:var(--maxw); margin:0 auto; padding:1rem; }
 .hero { text-align:center; padding:4rem 1rem; background:linear-gradient(180deg,rgba(255,255,255,0.7),rgba(255,255,255,0)); }
-.hero h1 { font-size:2rem; margin:0 0 0.5rem; color:#123; }
+.hero h1 { font-size:2rem; margin-bottom:0.5rem; color:#123; }
 .subtitle { margin-bottom:1.5rem; color:var(--muted); font-size:1rem; }
 .language-select { margin-bottom:1.5rem; }
-.language-select select {
-  padding:0.7rem 1rem; font-size:1rem; border-radius:50px; border:1px solid #ccc; background:#fff; cursor:pointer;
-}
+.language-select select { padding:0.7rem 1rem; font-size:1rem; border-radius:50px; border:1px solid #ccc; background:#fff; cursor:pointer; }
 .btn { display:inline-block; padding:1rem 2rem; border:none; border-radius:50px; font-weight:700; cursor:pointer; transition:0.2s; }
 .btn.primary { background:var(--accent); color:#fff; }
 .btn.primary:hover { background:var(--accent-dark); }
