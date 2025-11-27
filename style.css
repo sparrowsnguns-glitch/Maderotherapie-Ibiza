@@ -1,1 +1,84 @@
+:root {
+  --beige: #f5efe6;
+  --sand: #e8d9c5;
+  --terra: #c18f6a;
+  --dark: #3b2f2f;
+  --white: #ffffff;
+}
+
+body {
+  margin: 0;
+  font-family: "Montserrat", sans-serif;
+  background: var(--beige);
+  color: var(--dark);
+}
+
+header {
+  text-align: center;
+  padding: 30px 20px;
+  background: var(--sand);
+}
+
+h1 {
+  margin: 0;
+  font-size: 2rem;
+}
+
+#quiz-container {
+  padding: 20px;
+}
+
+#question-card {
+  background: var(--white);
+  padding: 20px;
+  border-radius: 16px;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.15);
+}
+
+#answers button {
+  width: 100%;
+  padding: 15px;
+  margin-top: 10px;
+  background: var(--terra);
+  color: white;
+  border: none;
+  border-radius: 12px;
+  font-size: 1rem;
+}
+
+#answers button:hover {
+  background: #ad7955;
+}
+
+.hidden {
+  display: none;
+}
+
+#result-section {
+  padding: 20px;
+}
+
+.contact-form {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid var(--terra);
+  border-radius: 10px;
+}
+
+.contact-form button {
+  padding: 15px;
+  background: var(--terra);
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-size: 1rem;
+}
 
