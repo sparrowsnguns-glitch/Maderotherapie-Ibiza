@@ -1,39 +1,68 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Maderotherapie Ibiza — Quiz & Beratung</title>
-  <meta name="description" content="Finde dein persönliches Maderotherapie‑Programm auf Ibiza. Quiz in 2 Minuten, mobile‑first.">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Maderotherapie Ibiza — Quiz</title>
   <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
   <script defer src="app.js"></script>
+  <style>
+    :root{
+      --bg:#f6efe6;
+      --accent:#e9b7c0; /* Ibiza Rose */
+      --accent-dark:#c57a4a; /* Gold / Terracotta */
+      --card:#ffffff;
+      --radius:20px;
+      --maxw:720px;
+      --shadow:0 12px 24px rgba(0,0,0,0.08);
+    }
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{font-family: 'Nunito', system-ui; background:linear-gradient(180deg,var(--bg),#fff); color:#1f2933; min-height:100vh;}
+    .container{max-width:var(--maxw);margin:0 auto;padding:1rem;}
+    header{padding:3rem 1rem;text-align:center}
+    header h1{font-size:2rem;color:#123;letter-spacing:0.6px;}
+    #langSelect{padding:0.8rem 1rem;margin:1rem 0;border-radius:30px;border:1px solid #ccc;font-weight:700;font-size:0.95rem;}
+    .btn{padding:0.9rem 1.2rem;border:none;border-radius:30px;font-weight:700;cursor:pointer;transition:all 0.3s;}
+    .btn.primary{background:var(--accent);color:#fff;box-shadow:var(--shadow);}
+    .btn.primary:hover{transform:translateY(-2px);box-shadow:0 16px 28px rgba(0,0,0,0.1);}
+    .card{background:var(--card);border-radius:var(--radius);padding:1.5rem;margin:1rem 0;box-shadow:var(--shadow);}
+    .hidden{display:none;}
+    .quiz-question{font-weight:700;margin-bottom:0.8rem;font-size:1.05rem;}
+    .choice-list{display:grid;gap:0.6rem;margin-top:0.6rem;}
+    .choice button{width:100%;padding:0.8rem 1rem;border-radius:30px;border:1px solid rgba(0,0,0,0.08);background:linear-gradient(180deg,#fff,#fbfbfb);cursor:pointer;transition:all 0.2s;}
+    .choice button:hover{background:var(--accent);color:#fff;transform:translateY(-2px);}
+    #resultCard h2{margin-bottom:0.5rem;}
+    #resultCard p{margin-bottom:0.5rem;}
+    footer{padding:1rem;text-align:center;color:#666;}
+    @media(min-width:760px){
+      header h1{font-size:2.5rem;}
+    }
+  </style>
 </head>
 <body>
-  <main class="page">
-    <header class="hero">
-      <div class="hero-inner">
-        <h1>Maderotherapie Ibiza</h1>
-        <p id="info-text">Discover your personalized Maderotherapy plan for relaxation, contouring, and lymphatic wellness during your Ibiza vacation.</p>
-        <select id="langSelect" class="lang-select">
-          <option value="de">DE</option>
-          <option value="en" selected>EN</option>
-          <option value="es">ES</option>
-        </select>
-        <button id="startBtn" class="btn primary">Start Quiz</button>
-      </div>
+  <main class="container">
+    <header>
+      <h1>Maderotherapie Ibiza</h1>
+      <p id="info-text">Discover your personalized Maderotherapy plan for relaxation, contouring, and lymphatic wellness during your Ibiza vacation.</p>
+      <select id="langSelect">
+        <option value="de">DE</option>
+        <option value="en">EN</option>
+        <option value="es">ES</option>
+      </select>
+      <button id="startBtn" class="btn primary">Start Quiz</button>
     </header>
 
-    <section id="quizSection" class="quiz-wrap container hidden">
-      <div id="quizCard" class="card floating-card"></div>
+    <section id="quizSection" class="hidden">
+      <div id="quizCard" class="card"></div>
     </section>
 
-    <section id="resultSection" class="container hidden">
-      <div id="resultCard" class="card floating-card"></div>
+    <section id="resultSection" class="hidden">
+      <div id="resultCard" class="card"></div>
     </section>
 
-    <footer class="footer container">
-      <small>&copy; <span id="year"></span> Maderotherapie Ibiza</small>
+    <footer>
+      &copy; <span id="year"></span> Maderotherapie Ibiza
     </footer>
   </main>
 </body>
