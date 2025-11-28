@@ -5,7 +5,7 @@ const LANG = {
     infoText:"Discover your personalized Maderotherapy plan for relaxation, contouring, and lymphatic wellness during your Ibiza vacation.",
     questions:[
       {q:"What matters most to you regarding your body?",a:["Feel lighter & well","Firm & defined","Reduce water retention","Reduce cellulite / unevenness"]},
-      {q:"Which area is your current priority?",a:["Abdomen & waist","Buttocks","Legs","Arms","Back"]},
+      {q:"Which area has your current priority?",a:["Abdomen & waist","Buttocks","Legs","Arms","Back"]},
       {q:"How would you describe your current tissue structure?",a:["Smooth","Slight unevenness","Visible cellulite / water retention","More pronounced unevenness"]},
       {q:"Do you tend to bruise easily?",a:["Very easily","Sometimes","Rarely","Almost never"]},
       {q:"How does your body feel in daily life?",a:["Light & relaxed","Heavy / congested","Swollen"]},
@@ -19,7 +19,7 @@ const LANG = {
       {title:"Complete Body Reset",lead:"Transformational program for deeper structural change.",plan:"12–15 sessions • Focus: complete sculpting & long-term improvement."}
     ]
   },
-  de:{
+  de: {
     start:"Quiz starten",
     restart:"Quiz neu starten",
     infoText:"Entdecke dein persönliches Maderotherapie-Programm für Entspannung, Konturierung und Lymph-Wellness während deines Ibiza-Urlaubs.",
@@ -39,7 +39,7 @@ const LANG = {
       {title:"Complete Body Reset",lead:"Transformation mit nachhaltigem Straffungseffekt.",plan:"12–15 Sitzungen • Fokus: vollständige Modellage & tiefgreifende Konturveränderung."}
     ]
   },
-  es:{
+  es: {
     start:"Iniciar cuestionario",
     restart:"Reiniciar cuestionario",
     infoText:"Descubre tu programa personalizado de Maderoterapia para relajación, contorno y bienestar linfático durante tus vacaciones en Ibiza.",
@@ -72,8 +72,6 @@ const resultCard = document.getElementById("resultCard");
 const startBtn = document.getElementById("startBtn");
 const langSelect = document.getElementById("langSelect");
 const infoTextEl = document.getElementById("info-text");
-const yearSpan = document.getElementById("year");
-if(yearSpan) yearSpan.textContent = new Date().getFullYear();
 
 langSelect.addEventListener("change", ()=>{
   currentLang = langSelect.value;
@@ -98,6 +96,7 @@ function renderQuestion(){
     </div>
     <div style="margin-top:.6rem;text-align:right;color:#666">Question ${idx+1} of ${LANG[currentLang].questions.length}</div>
   `;
+
   quizCard.querySelectorAll("button").forEach(btn=>{
     btn.addEventListener("click", ()=>{
       score += parseInt(btn.dataset.index)+1;
@@ -133,11 +132,12 @@ function showResult(){
     </div>
   `;
 
+  // EventListener nach Rendern setzen
   document.getElementById("whatsappBtn").addEventListener("click", ()=>{
-    const name = document.getElementById("userName").value || "Anonymous";
+    const name = document.getElementById("userName").value.trim() || "Anonymous";
     const msg = `Hello, my name is ${name}. I completed the Maderotherapy quiz and my result is: ${res.title}.`;
     const waLink = `https://wa.me/4915901023189?text=${encodeURIComponent(msg)}`;
-    window.open(waLink, "_blank");
+    window.open(waLink,"_blank");
   });
 
   document.getElementById("restartBtn").addEventListener("click", ()=>{
