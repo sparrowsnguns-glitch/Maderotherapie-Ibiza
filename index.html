@@ -3,34 +3,36 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Maderotherapie Ibiza — Quiz</title>
+<title>Maderotherapie Ibiza — Quiz & Beratung</title>
 <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 <script defer src="app.js"></script>
 </head>
 <body>
-<main class="container">
-  <header>
-    <h1>Maderotherapie Ibiza</h1>
-    <p id="info-text">Discover your personalized Maderotherapy plan for relaxation, contouring, and lymphatic wellness during your Ibiza vacation.</p>
-    <select id="langSelect">
-      <option value="de">DE</option>
-      <option value="en" selected>EN</option>
-      <option value="es">ES</option>
-    </select>
-    <button id="startBtn" class="btn primary">Start Quiz</button>
+<main class="page">
+  <header class="hero">
+    <div class="hero-inner">
+      <h1>Maderotherapie Ibiza</h1>
+      <p id="info-text" class="subtitle">Entdecke dein persönliches Maderotherapie-Programm für Entspannung, Konturierung und Lymph-Wellness während deines Ibiza-Urlaubs.</p>
+      <select id="langSelect" class="lang-select">
+        <option value="de">DE</option>
+        <option value="en" selected>EN</option>
+        <option value="es">ES</option>
+      </select>
+      <button id="startBtn" class="btn primary">Start Quiz</button>
+    </div>
   </header>
 
-  <section id="quizSection" class="hidden">
-    <div id="quizCard" class="card animate"></div>
+  <section id="quizSection" class="container hidden">
+    <div id="quizCard" class="card animated"></div>
   </section>
 
-  <section id="resultSection" class="hidden">
-    <div id="resultCard" class="card animate"></div>
+  <section id="resultSection" class="container hidden">
+    <div id="resultCard" class="card animated"></div>
   </section>
 
-  <footer>
-    &copy; <span id="year"></span> Maderotherapie Ibiza
+  <footer class="footer container">
+    <small>&copy; <span id="year"></span> Maderotherapie Ibiza</small>
   </footer>
 </main>
 </body>
