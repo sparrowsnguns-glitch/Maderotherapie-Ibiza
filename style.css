@@ -1,30 +1,28 @@
-:root {
-  --bg:#f6efe6;
-  --accent:#ea6b8d;
-  --accent2:#d4af7f;
-  --muted:#6b6b6b;
-  --card:#fff;
+:root{
+  --bg:#f6efe6; /* sand */
+  --accent:#d6a77a; /* terracotta/sandfarben */
+  --accent-dark:#c57a4a;
+  --card:#ffffff;
   --radius:20px;
   --maxw:720px;
-  --shadow:0 10px 30px rgba(0,0,0,0.08);
+  --shadow:0 12px 24px rgba(0,0,0,0.08);
 }
-*{box-sizing:border-box}
-body{margin:0;font-family:'Nunito',sans-serif;background:linear-gradient(180deg,var(--bg),#fff);color:#123;min-height:100vh;-webkit-font-smoothing:antialiased;}
-.container{max-width:var(--maxw);margin:0 auto;padding:1rem}
-.hero{padding:3rem 1rem;text-align:center;background:linear-gradient(180deg,rgba(255,255,255,0.7),rgba(255,255,255,0));backdrop-filter:blur(6px);}
-.hero-inner h1{font-size:2rem;margin-bottom:.5rem;color:#123}
-.lang-select{padding:.6rem 1rem;margin:.8rem 0;border-radius:50px;border:1px solid var(--accent);background:#fff;font-weight:700;color:var(--accent);cursor:pointer;}
-.btn{display:inline-block;padding:.8rem 1.5rem;border-radius:50px;font-weight:700;border:none;cursor:pointer;transition:all .3s ease;}
-.btn.primary{background:var(--accent);color:#fff;box-shadow:0 5px 15px rgba(0,0,0,0.1);}
-.btn.primary:hover{transform:translateY(-2px);box-shadow:0 8px 20px rgba(0,0,0,0.15);}
-.card{background:var(--card);border-radius:var(--radius);padding:1.5rem;margin:1rem 0;box-shadow:var(--shadow);transition:all .5s ease;}
-.floating-card{animation:fadeInUp .6s ease forwards;opacity:0;transform:translateY(30px);}
-@keyframes fadeInUp{to{opacity:1;transform:translateY(0);}}
-.quiz-question{font-weight:700;margin-bottom:1rem;font-size:1.1rem;}
-.choice-list{display:grid;gap:.8rem}
-.choice button{width:100%;padding:.8rem 1rem;border-radius:50px;border:1px solid #eee;background:#fff;font-size:1rem;cursor:pointer;transition:all .3s;}
-.choice button:hover{background:var(--accent);color:#fff;transform:translateY(-2px);}
-.form-row{display:flex;flex-direction:column;gap:.6rem;margin-top:.5rem;}
-input,textarea{padding:.8rem;border-radius:12px;border:1px solid #ddd;font-size:1rem;}
-.footer{padding:1.2rem 0;text-align:center;color:var(--muted);}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Nunito',sans-serif;background:linear-gradient(180deg,var(--bg),#fff);color:#1f2933;min-height:100vh;}
+.container{max-width:var(--maxw);margin:0 auto;padding:1rem;}
+header{padding:3rem 1rem;text-align:center}
+header h1{font-size:2rem;color:#123;letter-spacing:0.6px;margin-bottom:0.8rem;}
+#langSelect{padding:0.8rem 1rem;margin:1rem 0;border-radius:30px;border:1px solid #ccc;font-weight:700;font-size:0.95rem;}
+.btn{padding:0.9rem 1.2rem;border:none;border-radius:30px;font-weight:700;cursor:pointer;transition:all 0.3s;}
+.btn.primary{background:var(--accent);color:#fff;box-shadow:var(--shadow);}
+.btn.primary:hover{transform:translateY(-2px);box-shadow:0 16px 28px rgba(0,0,0,0.1);}
+.card{background:var(--card);border-radius:var(--radius);padding:1.5rem;margin:1rem 0;box-shadow:var(--shadow);}
 .hidden{display:none;}
+.quiz-question{font-weight:700;margin-bottom:0.8rem;font-size:1.05rem;}
+.choice-list{display:grid;gap:0.6rem;margin-top:0.6rem;}
+.choice button{width:100%;padding:0.8rem 1rem;border-radius:30px;border:1px solid rgba(0,0,0,0.08);background:linear-gradient(180deg,#fff,#fbfbfb);cursor:pointer;transition:all 0.2s;}
+.choice button:hover{background:var(--accent);color:#fff;transform:translateY(-2px);}
+#resultCard h2{margin-bottom:0.5rem;}
+#resultCard p{margin-bottom:0.5rem;}
+footer{padding:1rem;text-align:center;color:#666;}
+@media(min-width:760px){header h1{font-size:2.5rem;}}
