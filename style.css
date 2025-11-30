@@ -1,184 +1,38 @@
 :root {
-  --bg: #f6efe6;            /* Sanftes Sandfarben-Hintergrund */
-  --accent: #d7c6af;        /* Hauptfarbe für Buttons */
-  --accent-hover: #cfc2b6;  /* Hoverfarbe für Buttons */
-  --text: #2a2a2a;          /* Dunkles Text */
-  --card: #ffffff;           /* Karte Hintergrund */
-  --radius: 25px;            /* Runde Ecken */
-  --maxw: 720px;             /* Max Breite */
-  --transition: 0.4s ease;
-  --ghost: #f0e9dd;          /* Für Ghost Buttons / Restart */
+  --bg: #f6efe6;
+  --accent: #d1bfa7; /* softer sand contrast */
+  --accent-hover: #cfc2b6;
+  --text: #123;
+  --card: #fff;
+  --radius: 16px;
+  --maxw: 720px;
 }
-
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
+* { box-sizing: border-box; margin:0; padding:0; }
 body {
   font-family: 'Nunito', sans-serif;
-  background: linear-gradient(180deg, var(--bg), #fff);
+  background: linear-gradient(180deg,var(--bg),#fff);
   color: var(--text);
 }
-
-.container {
-  max-width: var(--maxw);
-  margin: 0 auto;
-  padding: 1rem;
-}
-
-.hero {
-  padding: 3rem 1rem;
-  text-align: center;
-}
-
-.hero-inner h1 {
-  font-size: 2.2rem;
-  margin-bottom: 0.5rem;
-  font-weight: 800;
-}
-
-.subtitle {
-  margin-bottom: 1rem;
-  font-weight: 400;
-  line-height: 1.5;
-}
-
-.lang-select {
-  padding: 0.6rem 1.2rem;
-  border-radius: 30px;
-  border: 1px solid #ddd;
-  margin-bottom: 1rem;
-  font-weight: 600;
-  background: #fff;
-  cursor: pointer;
-  transition: var(--transition);
-}
-
-.lang-select:hover {
-  border-color: var(--accent-hover);
-}
-
+.container { max-width: var(--maxw); margin: 0 auto; padding: 1rem; }
+.hero { padding:3rem 1rem; text-align:center; }
+.hero-inner h1 { font-size:2rem; margin-bottom:0.5rem; }
+.subtitle { margin-bottom:1rem; }
+.lang-select { padding:0.6rem 0.8rem; border-radius:20px; border:1px solid #ddd; margin-bottom:1rem; font-weight:600; }
 .btn {
-  display: inline-block;
-  padding: 0.9rem 1.6rem;
-  border-radius: 30px;
-  border: none;
-  font-weight: 700;
-  cursor: pointer;
-  transition: var(--transition);
-  text-align: center;
+  display:inline-block; padding:0.9rem 1.5rem; border-radius:30px; border:none;
+  font-weight:700; cursor:pointer; transition:0.2s;
 }
-
-.btn.primary {
-  background: var(--accent);
-  color: #fff;
-}
-
-.btn.primary:hover {
-  background: var(--accent-hover);
-}
-
-.btn.ghost {
-  background: var(--ghost);
-  color: var(--text);
-  border: 1px solid #ddd;
-}
-
-.btn.ghost:hover {
-  background: #e6ddd0;
-}
-
+.btn.primary { background: var(--accent); color:#fff; }
+.btn.primary:hover { background: var(--accent-hover); }
 .card {
-  background: var(--card);
-  border-radius: var(--radius);
-  padding: 2rem;
-  margin: 1rem 0;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
-  transform: translateY(0);
-  opacity: 1;
-  transition: var(--transition);
+  background: var(--card); border-radius: var(--radius); padding:1.5rem;
+  margin:1rem 0; box-shadow:0 10px 20px rgba(0,0,0,0.08);
 }
-
-.quiz-question {
-  font-weight: 700;
-  margin-bottom: 1rem;
-  font-size: 1.15rem;
-}
-
-.choice-list {
-  display: grid;
-  gap: 0.8rem;
-}
-
-.choice button {
-  width: 100%;
-  border: none;
-  background: #fdfaf6;
-  padding: 0.9rem;
-  border-radius: 20px;
-  text-align: left;
-  font-weight: 500;
-  cursor: pointer;
-  transition: var(--transition);
-}
-
-.choice button:hover {
-  background: var(--accent-hover);
-}
-
-input, textarea {
-  width: 100%;
-  padding: 0.8rem;
-  border-radius: 16px;
-  border: 1px solid #ddd;
-  margin-bottom: 0.8rem;
-  font-size: 1rem;
-}
-
-input::placeholder, textarea::placeholder {
-  color: #aaa;
-}
-
-.hidden {
-  display: none;
-}
-
-.animated {
-  transition: all 0.5s ease;
-}
-
-.fade-out {
-  opacity: 0;
-  transform: translateY(20px);
-}
-
-.fade-in {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.footer {
-  padding: 1rem 0;
-  text-align: center;
-  color: #666;
-  font-size: 0.9rem;
-}
-
-.result-plan {
-  margin-top: 0.5rem;
-  font-weight: 600;
-}
-
-.progress {
-  margin-top: 0.6rem;
-  text-align: right;
-  color: #666;
-  font-size: 0.9rem;
-}
-
-#userName {
-  margin-top: 0.5rem;
-  margin-bottom: 0.8rem;
-}
+.quiz-question { font-weight:700; margin-bottom:1rem; }
+.choice-list { display:grid; gap:0.8rem; }
+.choice button { width:100%; border:none; background:#fdfaf6; padding:0.9rem; border-radius:20px; text-align:left; font-weight:500; cursor:pointer; transition:0.2s; }
+.choice button:hover { background: var(--accent-hover); }
+.hidden { display:none; }
+.form-row { margin-bottom:0.8rem; }
+input, textarea { width:100%; padding:0.8rem; border-radius:16px; border:1px solid #ddd; }
+.footer { padding:1rem 0; text-align:center; color:#666; }
